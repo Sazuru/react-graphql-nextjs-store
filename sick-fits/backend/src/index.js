@@ -1,7 +1,7 @@
 require('dotenv').config({ path: 'variables.env' });
-
 const createServer = require('./createServer');
 const db = require('./db');
+
 const server = createServer();
 
 // TODO Use express middlware to handle cookies (JWT)
