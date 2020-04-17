@@ -5,8 +5,8 @@ const Mutations = {
     const item = await ctx.db.mutation.createItem(
       {
         data: {
-          ...args,
-        },
+          ...args
+        }
       },
       info
     );
@@ -15,13 +15,20 @@ const Mutations = {
 
     return item;
   },
-  // createDog(parent, args, ctx, info) {
-  //   global.dogs = global.dogs || [];
-  //   // create a dog
-  //   const newDog = { name: args.name };
-  //   global.dogs.push(newDog);
-  //   return newDog;
-  // },
+  updateItem(parent, args, ctx, info) {
+    //Возьмем копию обновлений
+    const updates = { ...args };
+    // удаляем ID из обновлений
+    delete updates.id;
+    //запускаем метод обновлений
+    return ctx.db.mutation.updateItem({
+      data: updates,
+      where: {
+        id: args.id
+      },
+      info
+    });
+  }
 };
 
 module.exports = Mutations;
