@@ -15,6 +15,7 @@ const Mutations = {
 
     return item;
   },
+
   updateItem(parent, args, ctx, info) {
     //Возьмем копию обновлений
     const updates = { ...args };
@@ -28,6 +29,12 @@ const Mutations = {
       },
       info
     });
+  },
+
+  async deleteItem(parent, args, ctx, info) {
+    const where = { id: args.id };
+    const item = await ctx.db.query.item({ where }, `{id title}`);
+    return ctx.db.mutation.deleteItem({ where }, info);
   }
 };
 
