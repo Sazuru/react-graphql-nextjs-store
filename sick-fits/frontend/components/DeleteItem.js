@@ -11,7 +11,7 @@ const DELETE_ITEM_MUTATION = gql`
   }
 `;
 
-export default class DeleteItem extends Component {
+class DeleteItem extends Component {
   update = (cache, payload) => {
     // manually update the cache on the client, so it matches the server
     // 1. Read the cache for the items we want
@@ -47,3 +47,5 @@ export default class DeleteItem extends Component {
     );
   }
 }
+
+export default DeleteItem;
