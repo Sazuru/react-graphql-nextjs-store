@@ -131,7 +131,7 @@ class CreateItem extends Component {
                   name="description"
                   placeholder="Enter a Description"
                   required
-                  value={this.state.price}
+                  value={this.state.description}
                   onChange={this.handleChange}
                 />
               </label>
