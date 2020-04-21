@@ -20,30 +20,28 @@ const SIGNUP_MUTATION = gql`
 
 class Signup extends Component {
   state = {
-    email: '',
     name: '',
     password: '',
+    email: '',
   };
-  saveToState = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+  saveToState = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
   render() {
     return (
       <Mutation mutation={SIGNUP_MUTATION} variables={this.state}>
-        {(signup, { loading, error }) => (
+        {(signup, { error, loading }) => (
           <Form
             method="post"
-            onSubmit={async (event) => {
+            onSubmit={async (e) => {
               e.preventDefault();
               await signup();
-              this.setState({ email: '', name: '', password: '' });
+              this.setState({ name: '', email: '', password: '' });
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>
+              <h2>Sign Up for An Account</h2>
               <Error error={error} />
-              <h2>Sign Up To Your Account</h2>
               <label htmlFor="email">
                 Email
                 <input
@@ -74,7 +72,8 @@ class Signup extends Component {
                   onChange={this.saveToState}
                 />
               </label>
-              <button type="submit">Sign Up</button>
+
+              <button type="submit">Sign Up!</button>
             </fieldset>
           </Form>
         )}
