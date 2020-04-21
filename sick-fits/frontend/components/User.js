@@ -14,12 +14,12 @@ const CURRENT_USER_QUERY = gql`
 `;
 
 const User = (props) => (
-  <Query {...props} query={CURRENT_USER_QUERY}>
-    {(payload) => props.children(payload)}
+  <Query {...props} query={CURRENT_USER_QUERY} pollInterval={2000}>
+    {(payload) => console.log(payload) || props.children(payload)}
   </Query>
 );
 
-User.PropTypes = {
+User.propTypes = {
   children: PropTypes.func.isRequired,
 };
 
