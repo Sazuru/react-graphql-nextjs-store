@@ -10,7 +10,9 @@ const transport = nodemailer.createTransport({
 });
 
 const makeANiceEmail = (text) =>
-  `<div className="email" style="border: 1px solid black; padding: 20px; font-family: sans-serif; line-height: 2; font-size: 20px;">
+  `<div className="email" style="color: white; background: rgb(245, 119, 78); border: 1px solid black; 
+    padding: 20px; font-family: sans-serif; line-height: 2; font-size: 20px;">
+    <img src="https://res.cloudinary.com/dnqhdklcw/image/upload/v1587573580/sickfits/sick-fits-logo_mcdgs9.png"/>
     <h2>Hello There!</h2>
     <p>${text}</p>
     <p>😘, Valentin Ageev</p>
