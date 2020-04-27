@@ -1,9 +1,10 @@
 import CreateItem from '../components/CreateItem';
+import SignInRequire from '../components/SignInRequire';
 
 const Sell = (props) => (
-  <div>
+  <SignInRequire>
     <CreateItem />
-  </div>
+  </SignInRequire>
 );
 
 export default Sell;
